@@ -16,7 +16,7 @@ from uncountable.types import (
 MATERIAL_FAMILY_ID = 1
 
 
-def create_project(client: Client, project_name: str) -> entity_t.Entity:
+def _create_project(client: Client, project_name: str) -> entity_t.Entity:
     return client.create_entity(
         definition_id=1081,
         entity_type=entity_t.EntityType.PROJECT,
@@ -32,7 +32,7 @@ def create_project(client: Client, project_name: str) -> entity_t.Entity:
 def load_data(client: Client, *, data: dict[str, dict]) -> None:
     inputs_lookup = {}
 
-    project = create_project(
+    project = _create_project(
         client=client, project_name="Project 06/06/2025"
     )  # TODO update project_name
 
