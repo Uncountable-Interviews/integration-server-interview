@@ -39,7 +39,7 @@ jobs:
     deploy:
         needs: [build]
         # Toggle off to disable auto deploys
-        if: true
+        if: false
         uses: ./.github/workflows/deploy.yml
         with:
             ImageTag: ${{ needs.build.outputs.ImageTag }}
