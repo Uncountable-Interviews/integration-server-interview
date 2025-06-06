@@ -1,7 +1,7 @@
 [project]
 # begin_project_name
 # DO NOT MODIFY
-name = "integration-server-demo"
+name = "integration-server-hiring"
 # end_project_name
 dynamic = ["version"]
 dependencies = [
