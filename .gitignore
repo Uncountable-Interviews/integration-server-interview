@@ -1,0 +1,56 @@
+mnt
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.pyenv
+env
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis
+data/**
+!data/*.md
+cache/**
+!cache/*.md
+.DS_Store
+.env
+build
+*.egg-info
+
+# ipython notebooks
+.ipynb_checkpoints
+*.ipynb
+
+# data-containing files
+*.csv
+*.txt
+*.xls
+*.xlsx
+*.xlsm
+*.pkl
+*.gz
+*.zs2
+# .json and .yml are still included
+
+# pictures
+*.gif
+*.jpg
+*.png
+
+# local overrides
+**/local_overrides.yaml
+
+.venv
+data

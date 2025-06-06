@@ -1,0 +1,30 @@
+name: PR Validate
+
+on: [pull_request]
+
+jobs:
+    validate-backend:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+            - name: Prepare Workflow
+              uses: ./.github/actions/prepare_workflow
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN}}
+            - name: Setup
+              uses: ./.github/actions/setup
+            - name: Cache MYPY
+              uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4
+              env:
+                  cache-name: integrations-mypycache-1
+              with:
+                  path: .mypy_cache
+                  key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ steps.get-sha.outputs.sha }}
+                  restore-keys: |
+                      ${{ runner.os }}-build-${{ env.cache-name }}-
+            - name: Validate Repo
+              run: |
+                  PIPELINE=true \
+                  PYTHONPATH=/home/runner/work/main/main \
+                  just validate-repo
+

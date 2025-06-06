@@ -1,0 +1,28 @@
+environments:
+  local:
+    base_url: http://localhost:5000
+    auth_retrieval:
+      type: basic
+      api_id_secret:
+        type: env
+        env_key: API_ID
+      api_key_secret:
+        type: env
+        env_key: API_SECRET_KEY
+jobs:
+  - id: example_cron
+    type: cron
+    name: MyCron - Example
+    cron_spec: "* * * * *"
+    executor: 
+      type: script
+      import_path: example_cron
+  - id: example_wh
+    type: webhook
+    name: MyWebhook - Example
+    signature_key_secret:
+      type: env
+      env_key: EXAMPLE_WH_SIGNATURE_KEY
+    executor: 
+      type: script
+      import_path: example_wh

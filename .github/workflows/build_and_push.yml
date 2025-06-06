@@ -1,0 +1,47 @@
+name: Build and Push
+
+on:
+    push:
+      branches:
+        - main
+env:
+    AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_GITHUB_INTEGRATIONS_BUILD_SECRET}}
+    AWS_ACCESS_KEY_ID: ${{secrets.AWS_GITHUB_INTEGRATIONS_BUILD_ACCESS_ID}}
+jobs:
+    build:
+        timeout-minutes: 90
+        runs-on: ubuntu-latest
+        outputs:
+            ImageTag: ${{ steps.setup-env.outputs.ImageTag }}
+
+        steps:
+            - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+            - name: Prepare Workflow
+              uses: ./.github/actions/prepare_workflow
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN}}
+
+            - name: Set up Docker Buildx
+              uses: docker/setup-buildx-action@v3
+
+            - name: Setup environment
+              id: setup-env
+              run: |
+                  echo "ImageTag=$(just get-image-tag)" >> $GITHUB_OUTPUT
+
+            - name: Build Docker
+              run: |
+                  just build
+
+            - name: Push Docker
+              run: |
+                  just push
+    deploy:
+        needs: [build]
+        # Toggle off to disable auto deploys
+        if: true
+        uses: ./.github/workflows/deploy.yml
+        with:
+            ImageTag: ${{ needs.build.outputs.ImageTag }}
+        secrets: inherit
+

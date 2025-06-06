@@ -1,0 +1,15 @@
+name: "Prepare for Github Workflow Run"
+description: "Runs initial justfile setup"
+inputs:
+    github-token:
+        required: true
+        description: "The github token secret"
+runs:
+    using: "composite"
+    steps:
+        - uses: extractions/setup-just@dd310ad5a97d8e7b41793f8ef055398d51ad4de6 # v2
+          env:
+              GITHUB_TOKEN: ${{ inputs.github-token }}
+          with:
+              just-version: 0.9
+

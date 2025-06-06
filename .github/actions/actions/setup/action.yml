@@ -1,0 +1,31 @@
+name: "Setup Python Backend for Workflows"
+description: "Installs python and packages for backend"
+runs:
+    using: "composite"
+    steps:
+        - name: Setup Python
+          uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5
+          with:
+              python-version: "3.12"
+        - name: Get Ubuntu Version
+          id: ubuntu-version
+          shell: bash
+          run: |
+              source /etc/lsb-release
+              VER=$(echo $DISTRIB_DESCRIPTION | tr ' ' '_')
+              echo "version=$VER"
+              echo "version=$VER" >>$GITHUB_OUTPUT
+        - name: Cache Pip
+          id: cache-pip
+          uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4
+          env:
+              cache-name: pipcache_v2
+          with:
+              path: ${{ env.pythonLocation }}
+              key: ${{ runner.os }}-${{ steps.ubuntu-version.outputs.version }}-${{ env.cache-name }}-${{ hashFiles('pyproject.toml') }}
+        - if: steps.cache-pip.outputs.cache-hit != 'true'
+          name: Install python for ci
+          shell: bash
+          run: python3 -m pip install .
+
+
