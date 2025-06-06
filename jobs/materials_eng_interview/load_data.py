@@ -103,8 +103,8 @@ if __name__ == "__main__":
     client = Client(
         base_url="https://dev.uncountable.com",
         auth_details=AuthDetailsApiKey(
-            api_id="0PRlHdiN6FkfpPSooXLYu2W6mrEmaqmrhsjCtxey3_Q",  # TODO
-            api_secret_key="5CURUNZ-S2srne7KUjyQsZEhMoNSv01Ot9zS2FCtLGjyBgSGRHNS_Eh8GznWQwJD_LqtALznW2jUmc0FNkgeog",  # TODO
+            api_id="",  # TODO
+            api_secret_key="",  # TODO
         ),
     )
     with open("jobs/materials_eng_interview/UncountableFrontEndDataset.json") as file:
