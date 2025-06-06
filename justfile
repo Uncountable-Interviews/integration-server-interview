@@ -20,10 +20,10 @@ get-full-image-name:
 docker-login:
   aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 502071203139.dkr.ecr.us-west-2.amazonaws.com
 
-push: docker-login
+push:
   docker push $(just get-full-image-name)
 
-build: docker-login
+build:
   docker build -t $(just get-full-image-name) .
 
 mk-data-dir:
