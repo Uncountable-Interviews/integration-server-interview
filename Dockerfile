@@ -1,4 +1,4 @@
-FROM 502071203139.dkr.ecr.us-west-2.amazonaws.com/uncountable/integrations/integration-server-base:73c9ea80b8d
+FROM public.ecr.aws/uncountable/uncountable/integrations/public/integration-server-base:1b2d73b6708
 
 COPY ./pyproject.toml .
 RUN python -m pip install .
