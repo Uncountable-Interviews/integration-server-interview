@@ -1,6 +1,4 @@
-# 🐛 Debugging Exercise — Software Engineer Interview
-
-Welcome to the Uncountable Software Engineer Interview!
+# Debugging Exercise — Full-Stack Software Engineer Interview
 
 As part of this interview, you will complete a live debugging exercise using a provided Python script that interacts with our SDK. This exercise is designed to assess your debugging skills, code comprehension, and your ability to reason through both common and subtle issues in a real-world codebase.
 
