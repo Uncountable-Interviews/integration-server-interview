@@ -1,3 +1,4 @@
+import datetime
 import json
 from decimal import Decimal
 
@@ -17,11 +18,16 @@ MATERIAL_FAMILY_ID = 1
 
 
 def _create_project(client: Client, project_name: str) -> entity_t.Entity:
+    new_project_name = project_name + datetime.datetime.today().strftime(
+        "%Y-%m-%d %H:%M:%S"
+    )
     return client.create_entity(
         definition_id=1081,
         entity_type=entity_t.EntityType.PROJECT,
         field_values=[
-            field_values_t.FieldRefNameValue(field_ref_name="name", value=project_name),
+            field_values_t.FieldRefNameValue(
+                field_ref_name="name", value=new_project_name
+            ),
             field_values_t.FieldRefNameValue(
                 field_ref_name="materialFamilyId", value=MATERIAL_FAMILY_ID
             ),
@@ -29,12 +35,25 @@ def _create_project(client: Client, project_name: str) -> entity_t.Entity:
     ).entity
 
 
-def load_data(client: Client, *, data: dict[str, dict]) -> None:
-    inputs_lookup = {}
+def _fetch_inputs(client: Client) -> dict:
+    existing_inputs = client.get_input_names(
+        material_family_id=MATERIAL_FAMILY_ID, is_parameter=False
+    ).inputs
 
+    input_name_lookup: dict = {}
+    for existing_input in existing_inputs:
+        if existing_input.name not in input_name_lookup:
+            input_name_lookup[existing_input.name] = existing_input.input_id
+
+    return input_name_lookup
+
+
+def load_data(client: Client, *, data: dict[str, dict]) -> None:
     project = _create_project(
-        client=client, project_name="Project 06/06/2025"
+        client=client, project_name="Interview Project"
     )  # TODO update project_name
+
+    existing_inputs_lookup = _fetch_inputs(client=client)
 
     for recipe_name, recipe_data in data.items():
         new_recipe_def = create_recipes_t.CreateRecipeDefinition(
@@ -51,7 +70,7 @@ def load_data(client: Client, *, data: dict[str, dict]) -> None:
             edit_recipe_inputs_t.RecipeInputEditClearInputs()
         ]
         for input_name, input_val in inputs.items():
-            if input_name not in inputs_lookup:
+            if input_name not in existing_inputs_lookup:
                 input_to_create = create_inputs_t.InputToCreate(
                     name=input_name,
                     material_family_ids=[MATERIAL_FAMILY_ID],
@@ -62,13 +81,12 @@ def load_data(client: Client, *, data: dict[str, dict]) -> None:
                 input_result = client.external_create_inputs(
                     inputs_to_create=[input_to_create]
                 ).inputs[0]
-
-                inputs_lookup[input_name] = input_result.input_id
+                existing_inputs_lookup[input_name] = input_result.input_id
 
             recipe_input_edits.append(
                 edit_recipe_inputs_t.RecipeInputEditAddInput(
                     ingredient_key=identifier_t.IdentifierKeyId(
-                        id=inputs_lookup[input_name]
+                        id=existing_inputs_lookup[input_name]
                     ),
                     value_numeric=Decimal(input_val),
                 )
@@ -85,8 +103,8 @@ if __name__ == "__main__":
     client = Client(
         base_url="https://dev.uncountable.com",
         auth_details=AuthDetailsApiKey(
-            api_id="",  # TODO
-            api_secret_key="",  # TODO
+            api_id="0PRlHdiN6FkfpPSooXLYu2W6mrEmaqmrhsjCtxey3_Q",  # TODO
+            api_secret_key="5CURUNZ-S2srne7KUjyQsZEhMoNSv01Ot9zS2FCtLGjyBgSGRHNS_Eh8GznWQwJD_LqtALznW2jUmc0FNkgeog",  # TODO
         ),
     )
     with open("jobs/materials_eng_interview/UncountableFrontEndDataset.json") as file:
