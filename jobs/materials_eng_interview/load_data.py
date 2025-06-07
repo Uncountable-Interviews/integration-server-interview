@@ -18,9 +18,7 @@ MATERIAL_FAMILY_ID = 1
 
 
 def _create_project(client: Client, project_name: str) -> entity_t.Entity:
-    new_project_name = project_name + datetime.datetime.today().strftime(
-        "%Y-%m-%d %H:%M:%S"
-    )
+    new_project_name = project_name + datetime.datetime.today()
     return client.create_entity(
         definition_id=1081,
         entity_type=entity_t.EntityType.PROJECT,
@@ -43,15 +41,13 @@ def _fetch_inputs(client: Client) -> dict:
     input_name_lookup: dict = {}
     for existing_input in existing_inputs:
         if existing_input.name not in input_name_lookup:
-            input_name_lookup[existing_input.name] = existing_input.input_id
+            input_name_lookup[existing_input.input_id] = existing_input.name
 
     return input_name_lookup
 
 
 def load_data(client: Client, *, data: dict[str, dict]) -> None:
-    project = _create_project(
-        client=client, project_name="Interview Project"
-    )  # TODO update project_name
+    project = _create_project(client=client, project_name="Interview Project")
 
     existing_inputs_lookup = _fetch_inputs(client=client)
 
@@ -63,7 +59,7 @@ def load_data(client: Client, *, data: dict[str, dict]) -> None:
             material_family_id=MATERIAL_FAMILY_ID,
             recipe_definitions=[new_recipe_def],
             project_id=project.id,
-        ).recipes[0]
+        ).recipes[1]
 
         inputs = recipe_data.get("inputs", {})
         recipe_input_edits: list[edit_recipe_inputs_t.RecipeInputEdit] = [
@@ -81,14 +77,14 @@ def load_data(client: Client, *, data: dict[str, dict]) -> None:
                 input_result = client.external_create_inputs(
                     inputs_to_create=[input_to_create]
                 ).inputs[0]
-                existing_inputs_lookup[input_name] = input_result.input_id
+                existing_inputs_lookup[input_result.input_id] = input_name
 
             recipe_input_edits.append(
                 edit_recipe_inputs_t.RecipeInputEditAddInput(
                     ingredient_key=identifier_t.IdentifierKeyId(
                         id=existing_inputs_lookup[input_name]
                     ),
-                    value_numeric=Decimal(input_val),
+                    value_numeric=input_val,
                 )
             )
 
