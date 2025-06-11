@@ -17,7 +17,9 @@ MATERIAL_FAMILY_ID = 1
 
 
 def _create_project(client: Client, project_name: str) -> entity_t.Entity:
-    new_project_name = project_name + datetime.datetime.today()
+    new_project_name = project_name + datetime.datetime.today().strftime(
+        "%Y-%m-%d %H:%M:%S"
+    )
     return client.create_entity(
         definition_id=1081,
         entity_type=entity_t.EntityType.PROJECT,
