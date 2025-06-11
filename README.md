@@ -35,7 +35,7 @@ You may choose **one** of the following options to run the script:
 3. Activate a virtual environment:
 
    ```bash
-   source venv/bin/activate
+   source .venv/bin/activate
    ```
 
 4. Run the script:
@@ -69,7 +69,7 @@ During this exercise, we are evaluating:
 ## Notes
 
 * The script interacts with our **Python SDK**, which simulates realistic interaction patterns you might encounter in production code.
-* You do not need prior experience with our SDK — the necessary documentation will be provided if required.
+* If you would like to reference documentation, the client methods used in this script can be found [here](https://uncountableinc.github.io/uncountable-python-sdk/autoapi/uncountable/types/client_base/#uncountable.types.client_base.ClientMethods).
 
 ## Good Luck!
 
