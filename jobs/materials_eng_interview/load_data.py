@@ -94,6 +94,7 @@ def load_data(client: Client, *, data: dict[str, dict]) -> None:
             recipe_workflow_step_identifier=recipe_workflow_steps_t.RecipeWorkflowStepIdentifierDefault(),
             edits=recipe_input_edits,
         )
+    print("Script has completed.")
 
 
 if __name__ == "__main__":
