@@ -19,12 +19,21 @@ You may choose **one** of the following options to run the script:
 
 ### Option 1 — Local Setup
 
-1. Clone this repository:
+1. Clone this repository
 
+If using SSH keys:
    ```bash
-   git clone <repo-url>
-   cd <repo-folder>
+   git clone git@github.com:UncountableExternal/integration-server-interview.git
+   cd main
    ```
+
+
+For https:
+   ```bash
+   git clone https://github.com/UncountableExternal/integration-server-interview.git
+   cd main
+   ```
+
 
 2. Run the setup command to install dependencies:
 
@@ -41,12 +50,12 @@ You may choose **one** of the following options to run the script:
 4. Run the script:
 
    ```bash
-   python path/to/script
+   python <path/to/script>
    ```
 
 ### Option 2 — Online Python Editor
 
-You may alternatively use our **online Python editor** (we will provide a link) that already contains the faulty script and required environment.
+You may alternatively use our **online Python editor** linked [here](https://replit.com/@willgoldie/SaneFlamboyantBrain#main.py) that already contains the faulty script and required environment setup.
 
 This option requires no local setup — simply open the editor and start debugging.
 
@@ -54,10 +63,10 @@ This option requires no local setup — simply open the editor and start debuggi
 
 During this exercise, we are evaluating:
 
-✅ Your ability to read and understand unfamiliar code
-✅ How systematically you debug and fix issues
-✅ Your thought process for determining issues with code
-✅ (After fixing) Your ideas for improving the script’s performance and clarity
+* ✅ Your ability to read and understand unfamiliar code
+* ✅ How systematically you debug and fix issues
+* ✅ Your thought process for determining issues with code
+* ✅ (After fixing) Your ideas for improving the script’s performance and clarity
 
 ## Guidelines
 
