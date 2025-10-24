@@ -5,7 +5,7 @@ name = "integration-server-hiring"
 # end_project_name
 dynamic = ["version"]
 dependencies = [
-  "UncountablePythonSDK == 0.0.129",
+  "UncountablePythonSDK == 0.0.*",
   "mypy == 1.*",
   "ruff == 0.*",
   "openpyxl == 3.*",
