@@ -19,21 +19,11 @@ You may choose **one** of the following options to run the script:
 
 ### Option 1 — Local Setup
 
-1. Clone this repository
+1. Install [just](https://just.systems/man/en/). You can use Homebrew to install this:
 
-If using SSH keys:
    ```bash
-   git clone git@github.com:UncountableExternal/integration-server-interview.git
-   cd main
+   brew install just
    ```
-
-
-For https:
-   ```bash
-   git clone https://github.com/UncountableExternal/integration-server-interview.git
-   cd main
-   ```
-
 
 2. Run the setup command to install dependencies:
 
@@ -78,7 +68,7 @@ During this exercise, we are evaluating:
 ## Notes
 
 * The script interacts with our **Python SDK**, which simulates realistic interaction patterns you might encounter in production code.
-* If you would like to reference documentation, the client methods used in this script can be found [here](https://uncountableinc.github.io/uncountable-python-sdk/autoapi/uncountable/types/client_base/#uncountable.types.client_base.ClientMethods).
+* If you would like to reference documentation, the client methods used in this script can be found [here](https://uncountableinc.github.io/uncountable-python-sdk/api/uncountable/types/client_base/ClientMethods/#uncountable.types.client_base.ClientMethods).
 
 ## Good Luck!
 
