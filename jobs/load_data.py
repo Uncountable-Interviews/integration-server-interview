@@ -1,6 +1,5 @@
 import datetime
 import json
-from decimal import Decimal
 
 from uncountable.core import AuthDetailsApiKey, Client
 from uncountable.types import (
