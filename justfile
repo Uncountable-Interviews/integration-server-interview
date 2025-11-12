@@ -1,6 +1,6 @@
 set export
 
-python := env_var_or_default('PYTHON_CMD', 'python3.12')
+python := env_var_or_default('PYTHON_CMD', 'python3')
 api_id := env_var_or_default("UNC_PROFILE_MATERIALS_DEMO_API_ID", "dummy")
 api_secret := env_var_or_default("UNC_PROFILE_MATERIALS_DEMO_API_SECRET_KEY", "dummy")
 
