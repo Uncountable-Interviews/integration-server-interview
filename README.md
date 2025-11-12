@@ -19,7 +19,7 @@ You may choose **one** of the following options to run the script:
 
 ### Option 1 — Local Setup
 
-1. Install [`just`](https://just.systems/man/en/). You can use Homebrew to install this:
+1. Install [just](https://just.systems/man/en/). You can use Homebrew to install this:
 
    ```bash
    brew install just
