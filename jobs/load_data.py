@@ -1,5 +1,6 @@
 import datetime
 import json
+from decimal import Decimal
 
 from uncountable.core import AuthDetailsApiKey, Client
 from uncountable.types import (
@@ -42,7 +43,7 @@ def _fetch_inputs(client: Client) -> dict:
     input_name_lookup: dict = {}
     for existing_input in existing_inputs:
         if existing_input.name not in input_name_lookup:
-            input_name_lookup[existing_input.input_id] = existing_input.name
+            input_name_lookup[existing_input.name] = existing_input.input_id
 
     return input_name_lookup
 
@@ -60,7 +61,7 @@ def load_data(client: Client, *, data: dict[str, dict]) -> None:
             material_family_id=MATERIAL_FAMILY_ID,
             recipe_definitions=[new_recipe_def],
             project_id=project.id,
-        ).recipes[1]
+        ).recipes[0]
 
         inputs = recipe_data.get("inputs", {})
         recipe_input_edits: list[edit_recipe_inputs_t.RecipeInputEdit] = [
@@ -78,14 +79,14 @@ def load_data(client: Client, *, data: dict[str, dict]) -> None:
                 input_result = client.external_create_inputs(
                     inputs_to_create=[input_to_create]
                 ).inputs[0]
-                existing_inputs_lookup[input_result.input_id] = input_name
+                existing_inputs_lookup[input_name] = input_result.input_id
 
             recipe_input_edits.append(
                 edit_recipe_inputs_t.RecipeInputEditAddInput(
                     ingredient_key=identifier_t.IdentifierKeyId(
                         id=existing_inputs_lookup[input_name]
                     ),
-                    value_numeric=input_val,
+                    value_numeric=Decimal(input_val),
                 )
             )
 
@@ -101,8 +102,8 @@ if __name__ == "__main__":
     client = Client(
         base_url="https://dev.uncountable.com",
         auth_details=AuthDetailsApiKey(
-            api_id="",  # TODO
-            api_secret_key="",  # TODO
+            api_id="ku9FGTJsi2tuoWywjXa897M9U-TlF544BbKJE76-5Vk",  # TODO
+            api_secret_key="HY-03rhM2b29FCxhZyEjNcmhxOFq_tfc067T1pkqq37m4oPoJ4dNH4GpS0jr8sRDpcgfgf9PTdTlzOps14Hbyw",  # TODO
         ),
     )
     with open("jobs/materials_eng_interview/UncountableFrontEndDataset.json") as file:
