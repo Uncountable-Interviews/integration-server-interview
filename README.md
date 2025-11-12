@@ -19,39 +19,25 @@ You may choose **one** of the following options to run the script:
 
 ### Option 1 — Local Setup
 
-1. Clone this repository
-
-   If using SSH keys:
-   ```bash
-   git clone git@github.com:UncountableExternal/integration-server-interview.git
-   cd main
-   ```
-
-
-   For https:
-   ```bash
-   git clone https://github.com/UncountableExternal/integration-server-interview.git
-   cd main
-   ```
-2. Install [`just`](https://just.systems/man/en/). You can use Homebrew to install this:
+1. Install [`just`](https://just.systems/man/en/). You can use Homebrew to install this:
 
    ```bash
    brew install just
    ```
 
-3. Run the setup command to install dependencies:
+2. Run the setup command to install dependencies:
 
    ```bash
    just setup
    ```
 
-4. Activate a virtual environment:
+3. Activate a virtual environment:
 
    ```bash
    source .venv/bin/activate
    ```
 
-5. Run the script:
+4. Run the script:
 
    ```bash
    python <path/to/script>
