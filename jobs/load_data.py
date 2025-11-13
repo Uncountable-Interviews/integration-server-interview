@@ -105,6 +105,6 @@ if __name__ == "__main__":
             api_secret_key="",  # TODO
         ),
     )
-    with open("jobs/materials_eng_interview/UncountableFrontEndDataset.json") as file:
+    with open("jobs/UncountableFrontEndDataset.json") as file:
         data = json.load(file)
         load_data(client, data=data)
