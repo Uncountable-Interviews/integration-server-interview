@@ -29,13 +29,7 @@ You may choose **one** of the following options to run the script:
    python3 -m pip install .
    ```
 
-2. Activate a virtual environment:
-
-   ```bash
-   source .venv/bin/activate
-   ```
-
-3. Run the script:
+2. Run the script:
 
    ```bash
    python <path/to/script>
