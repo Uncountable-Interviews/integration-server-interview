@@ -2,6 +2,8 @@
 
 As part of this interview, you will complete a live debugging exercise using a provided Python script that interacts with our SDK. This exercise is designed to assess your debugging skills, code comprehension, and your ability to reason through both common and subtle issues in a real-world codebase.
 
+Our SDK documentation can be found [here](https://uncountableinc.github.io/uncountable-python-sdk/api/uncountable/types/client_base/ClientMethods/#uncountable.types.client_base.ClientMethods).
+
 ## Objective
 
 Your goal is to debug and fix a provided Python script until it is working smoothly. The script currently contains several types of bugs, which may include but is not limited to:
@@ -19,25 +21,21 @@ You may choose **one** of the following options to run the script:
 
 ### Option 1 — Local Setup
 
-1. Install [just](https://just.systems/man/en/). You can use Homebrew to install this:
 
+1. Setup your virtual environment:
    ```bash
-   brew install just
+   python3 -m venv .venv
+   source .venv/bin/activate
+   python3 -m pip install .
    ```
 
-2. Run the setup command to install dependencies:
-
-   ```bash
-   just setup
-   ```
-
-3. Activate a virtual environment:
+2. Activate a virtual environment:
 
    ```bash
    source .venv/bin/activate
    ```
 
-4. Run the script:
+3. Run the script:
 
    ```bash
    python <path/to/script>
