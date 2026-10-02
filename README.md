@@ -21,20 +21,43 @@ You may choose **one** of the following options to run the script:
 
 ### Option 1 — Local Setup
 
+**Requires Python 3.12.** The Uncountable SDK needs 3.12 or newer, and the
+pinned `uWSGI` does not build on 3.13+. On any other version the dependency
+install fails, and the script then reports `No module named 'uncountable'`.
+If `python3 -V` is not 3.12, install it with `uv python install 3.12`,
+`brew install python@3.12`, or `pyenv install 3.12`.
 
-1. Setup your virtual environment:
+1. Create the virtual environment and install dependencies. Run this from a
+   shell with no other virtualenv active:
+
    ```bash
-   python3 -m venv .venv
+   just setup
+   ```
+
+   If `python3` is not 3.12, point `just` at the right interpreter:
+
+   ```bash
+   PYTHON_CMD=python3.12 just setup
+   ```
+
+   <details>
+   <summary>Equivalent manual steps</summary>
+
+   ```bash
+   python3.12 -m venv .venv
+   source .venv/bin/activate
+   python3 -m pip install .
+   ```
+   </details>
+
+2. Activate the virtual environment:
+
+   ```bash
    source .venv/bin/activate
    ```
 
-2. Install dependencies:
-
-   ```bash
-   python3 -m pip install .
-   ```
-
-3. Run the script:
+3. Run the script from the repository root (it reads
+   `jobs/UncountableFrontEndDataset.json` by relative path):
 
    ```bash
    python <path/to/script>
