@@ -19,15 +19,36 @@ Once you have the script running successfully, we will discuss potential improve
 
 You may choose **one** of the following options to run the script:
 
-### Option 1 — Local Setup
+### Option 1 — GitHub Codespaces (Recommended)
 
-**Using GitHub Codespaces?** The repo includes a devcontainer with Python 3.12
-and `just`, and it runs `just setup` automatically. Skip steps 1–2: activate
-the virtual environment with `source .venv/bin/activate` and run the script.
+A codespace is a cloud development environment that runs in your browser and
+comes with Python 3.12 and every dependency installed. You need a GitHub
+account, and nothing has to be installed on your machine.
+
+1. On this repository's GitHub page, click the green **Code** button, open the
+   **Codespaces** tab, and click **+** (*Create a codespace on main*).
+
+2. Wait for the codespace to finish setting up. It opens in a browser editor and
+   installs the dependencies, which takes a few minutes the first time. Setup
+   is done when the setup output in the terminal ends with
+   `To activate virtual env: source .venv/bin/activate`.
+
+3. In that terminal, activate the virtual environment and run the script:
+
+   ```bash
+   source .venv/bin/activate
+   python <path/to/script>
+   ```
+
+### Option 2 — Local Setup
+
+Use this if you would rather work on your own machine, for example from a
+downloaded ZIP of this repository. It **requires Python 3.12**: the dependency
+install fails on other versions.
 
 1. Setup your virtual environment:
    ```bash
-   python3 -m venv .venv
+   python3.12 -m venv .venv
    source .venv/bin/activate
    ```
 
@@ -37,17 +58,11 @@ the virtual environment with `source .venv/bin/activate` and run the script.
    python3 -m pip install .
    ```
 
-3. Run the script:
+3. Run the script from the repository root:
 
    ```bash
    python <path/to/script>
    ```
-
-### Option 2 — Online Python Editor
-
-You may alternatively use our **online Python editor** linked [here](https://replit.com/@willgoldie/SaneFlamboyantBrain#main.py) that already contains the faulty script and required environment setup.
-
-This option requires no local setup — simply open the editor and start debugging.
 
 ## What We Are Looking For
 
