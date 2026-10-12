@@ -21,6 +21,9 @@ You may choose **one** of the following options to run the script:
 
 ### Option 1 — Local Setup
 
+**Using GitHub Codespaces?** The repo includes a devcontainer with Python 3.12
+and `just`, and it runs `just setup` automatically. Skip steps 1–2: activate
+the virtual environment with `source .venv/bin/activate` and run the script.
 
 1. Setup your virtual environment:
    ```bash

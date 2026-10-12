@@ -1,0 +1,16 @@
+{
+  "name": "integration-server-interview",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/guiyomh/features/just:0": {}
+  },
+  "postCreateCommand": "just setup",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python"
+      },
+      "extensions": ["ms-python.python"]
+    }
+  }
+}
