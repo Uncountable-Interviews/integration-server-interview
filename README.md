@@ -28,15 +28,15 @@ account, and nothing has to be installed on your machine.
 1. On this repository's GitHub page, click the green **Code** button, open the
    **Codespaces** tab, and click **+** (*Create a codespace on main*).
 
-2. Wait for the codespace to finish setting up. It opens in a browser editor and
-   installs the dependencies, which takes a few minutes the first time. Setup
-   is done when the setup output in the terminal ends with
-   `To activate virtual env: source .venv/bin/activate`.
+2. Wait for the codespace to be created. The first time, installing the
+   dependencies takes a few minutes, and the editor opens in your browser
+   once they are ready.
 
-3. In that terminal, activate the virtual environment and run the script:
+3. Open a terminal (**Terminal → New Terminal**) and run the script. The
+   virtual environment is already active, which you can tell by the `(.venv)`
+   prefix on the prompt:
 
    ```bash
-   source .venv/bin/activate
    python <path/to/script>
    ```
 
