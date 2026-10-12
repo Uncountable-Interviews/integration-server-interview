@@ -10,7 +10,11 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python"
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+        // ~/.bashrc already activates .venv. The Python extension's own
+        // activation sends Ctrl+C and interrupts whatever the user is typing.
+        "python.terminal.activateEnvironment": false,
+        "python-envs.terminal.autoActivationType": "off"
       },
       "extensions": ["ms-python.python"]
     }

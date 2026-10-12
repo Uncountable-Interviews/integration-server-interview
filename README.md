@@ -28,16 +28,15 @@ account, and nothing has to be installed on your machine.
 1. On this repository's GitHub page, click the green **Code** button, open the
    **Codespaces** tab, and click **+** (*Create a codespace on main*).
 
-2. Wait for the codespace to be created. The first time, installing the
-   dependencies takes a few minutes, and the editor opens in your browser
-   once they are ready.
+2. Wait for the codespace to be created. The editor opens in your browser once
+   Python and the dependencies are ready.
 
 3. Open a terminal (**Terminal → New Terminal**) and run the script. The
    virtual environment is already active, which you can tell by the `(.venv)`
-   prefix on the prompt:
+   prefix on the prompt, so there is no need to run `source` or `just setup`:
 
    ```bash
-   python <path/to/script>
+   python jobs/load_data.py
    ```
 
 ### Option 2 — Local Setup
@@ -61,7 +60,7 @@ install fails on other versions.
 3. Run the script from the repository root:
 
    ```bash
-   python <path/to/script>
+   python jobs/load_data.py
    ```
 
 ## What We Are Looking For
