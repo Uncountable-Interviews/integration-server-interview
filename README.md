@@ -36,7 +36,7 @@ account, and nothing has to be installed on your machine.
    prefix on the prompt, so there is no need to run `source` or `just setup`:
 
    ```bash
-   python <path/to/script>
+   python jobs/load_data.py
    ```
 
 ### Option 2 — Local Setup
@@ -60,7 +60,7 @@ install fails on other versions.
 3. Run the script from the repository root:
 
    ```bash
-   python <path/to/script>
+   python jobs/load_data.py
    ```
 
 ## What We Are Looking For
