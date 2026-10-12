@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt
 import json
 
 from uncountable.core import AuthDetailsApiKey, Client
@@ -17,7 +17,7 @@ MATERIAL_FAMILY_ID = 1
 
 
 def _create_project(client: Client, project_name: str) -> entity_t.Entity:
-    new_project_name = project_name + datetime.datetime.today().strftime(
+    new_project_name = project_name + dt.datetime.today().strftime(
         "%Y-%m-%d %H:%M:%S"
     )
     return client.create_entity(
